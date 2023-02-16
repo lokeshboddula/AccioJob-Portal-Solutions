@@ -22,20 +22,22 @@ public class Main {
 class Solution{
   
     public boolean carPooling(int[][] trips, int capacity) {
+		//code here
+		// car travel space
 		int[] stops = new int[1001];
-		for(int i = 0; i < trips.length; i++) {
-			int numOfPass = trips[i][0];
-			stops[trips[i][1]] += numOfPass;
-			stops[trips[i][2]] -= numOfPass;
+		//adding and removing passengers at respective stops
+		for (int i = 0; i < trips.length; i++) {
+			stops[trips[i][1]] += trips[i][0];
+			stops[trips[i][2]] -= trips[i][0];
 		}
-		for(int i = 1; i < 1001; i++) {
-			stops[i] += stops[i - 1];
+		//creating prefix step array
+		for (int i = 1; i < 1001; i++) {
+			stops[i] = stops[i] + stops[i - 1];
 		}
-		for(int i = 0; i < 1001; i++) {
-			if(stops[i] > capacity) {
-				return false;
-			}
+		for (int i = 1; i < 1001; i++) {
+			if (stops[i] > capacity) return false;
 		}
-		return true;
+	return true;
+
 	}
 }
