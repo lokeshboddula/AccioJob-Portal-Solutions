@@ -35,7 +35,7 @@ class Solution{
 			stops[i] = stops[i] + stops[i - 1];
 		}
 	    	// checking if the capacity is exceeded at any stop
-		for (int i = 1; i < 1001; i++) {
+		for (int i = 0; i < 1001; i++) {
 			if (stops[i] > capacity) return false;
 		}
 	return true;
